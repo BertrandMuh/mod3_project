@@ -4,9 +4,8 @@ const logger = require('morgan');
 // cross origin access 
 const cors = require('cors');
 const axios = require('axios');
-const { useRef } = require('react');
-require('dotenv').config()
 
+require('dotenv').config()
 
 
 const app = express();
@@ -30,28 +29,29 @@ app.get('/test_route', (req, res) => {
 })
 
 app.get('/get_candle_data', async (req, res) => {
-    // console.log(req.body);
+
+    const makeApiCall = async (arr) => {
+        let additionalParams = '/candles?count=1&price=MBA&granularity=D'
+        let apiResponse = []
+        for (const pair of arr) {
+            const url = process.env.oanda_url + pair + additionalParams
+            let response = await axios.get(url, {
+                headers: {
+                    "Authorization": `Bearer ${process.env.api_key}`,
+                    "Content-Type": "application/json"
+                }
+            });
+            apiResponse.push(response.data)
+        }
+        console.log(apiResponse);
+        return apiResponse
+    }
+
     const pairsList = ['EUR_USD', 'USD_JPY', 'GBP_USD', 'AUD_USD', 'USD_CAD']
-    // 'USD_JPY', 'GBP_USD', 'AUD_USD', 'USD_CAD'
-    let additionalParams = '/candles?count=1&price=MBA&granularity=D'
-    let apiResponse = []
-    let count = 0;
-    pairsList.forEach(async (pair) => {
 
-        // let isFirstRender = useRef(true)
-        // let render = true
-        const url = process.env.oanda_url + pair + additionalParams
-
-        // let response = await axios(url, {
-        //     headers: {
-        //         "Authorization": `Bearer ${process.env.api_key}`,
-        //         "Content-Type": "application/json"
-        //     }
-        // });
-        apiResponse.push(url)
-
-    })
-    res.send(apiResponse)
+    let finalApiResponse = await makeApiCall(pairsList)
+    console.log(finalApiResponse);
+    res.send(finalApiResponse)
 })
 
 
