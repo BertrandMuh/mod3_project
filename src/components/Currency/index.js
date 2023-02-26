@@ -1,40 +1,29 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { candlesResquest } from '../../api_request'
+import React, { useContext } from 'react'
 import { AppContext } from '../../context/app_context'
-import Loading from '../Loading'
-import Pair from '../Pair'
+import { Link } from 'react-router-dom'
 import './index.css'
 
-const Currency = () => {
+const Currencies = () => {
 
-    let { pairList, setPairList } = useContext(AppContext)
-    let isFirstRender = useRef(true)
-    useEffect(() => {
-        const handleFitstLoad = async () => {
-            if (isFirstRender.current) {
-                let result = await candlesResquest()
-                setPairList(result)
-                isFirstRender.current = false
-            }
-        }
-        handleFitstLoad()
-
-    }, [setPairList])
-    // console.log(pairList);
+    let { pairList } = useContext(AppContext)
 
     const pairJSX = pairList.map((item, index) => {
+        let route = `/currency/?pair=${item.instrument}`
         let closePrice = item.candles[0].mid.c
         let openPrice = item.candles[0].mid.o
         let highPrice = item.candles[0].mid.h
         let lowPrice = item.candles[0].mid.l
+        let bullishOrBearish = closePrice > openPrice ? 'bullish' : closePrice < openPrice ? 'bearish' : 'neutral'
         if (item) {
             return (
                 <div key={index} className="fx-pair">
-                    <p>{item.instrument}</p>
+                    <Link to={route} className='link'>
+                        <p className='pair-name'>{item.instrument}</p>
+                    </Link>
                     <p>{openPrice}</p>
                     <p>{highPrice}</p>
                     <p>{lowPrice}</p>
-                    <p>{closePrice}</p>
+                    <p className={bullishOrBearish}>{closePrice}</p>
                 </div>
             )
         }
@@ -42,33 +31,19 @@ const Currency = () => {
             return null
         }
     })
-    console.log(pairJSX.length, pairList[0].candles[0].mid);
-
-
-
-
 
     return (
-        <div>
-            <h1>
-                Currency
-            </h1>
-            <p>
-                What is this page about?
-            </p>
-            <div className='home-price-detail'>
-                <h3>Previous day</h3>
-                <div className='fx-pair header'>
-                    <h3>Pairs</h3>
-                    <h3>Open</h3>
-                    <h3>High</h3>
-                    <h3>Low</h3>
-                    <h3>Close</h3>
-                </div>
-                {pairJSX}
+        <div className='home-price-detail'>
+            <div className='fx-pair header'>
+                <h3>Pairs</h3>
+                <h3>Open</h3>
+                <h3>High</h3>
+                <h3>Low</h3>
+                <h3>Close</h3>
             </div>
+            {pairJSX}
         </div>
     )
 }
 
-export default Currency
+export default Currencies

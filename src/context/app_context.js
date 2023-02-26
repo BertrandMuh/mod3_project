@@ -6,9 +6,11 @@ export const AppContext = createContext();
 const AppContextProvider = (props) => {
     const [pairList, setPairList] = useState([]);
 
+
     return (
         <AppContext.Provider value={{
             pairList, setPairList,
+
         }}>
             {props.children}
         </AppContext.Provider>

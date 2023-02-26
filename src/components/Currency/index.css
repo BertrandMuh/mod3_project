@@ -4,9 +4,38 @@
     align-items: center;
     max-width: 90%;
     margin: auto;
+    padding: 5px 0;
 }
 
-.fx-pair.header {
-    background: lightblue;
 
+.fx-pair:hover {
+    background: pink;
+}
+
+.fx-pair.thead {
+    background: lightblue;
+}
+
+.bullish {
+    color: rgb(12, 192, 3)
+}
+
+.bearish {
+    color: red
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.pair-name:hover {
+    color: darkgreen
+}
+
+.pair-name>p {
+    margin: 0;
 }
