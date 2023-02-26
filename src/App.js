@@ -8,8 +8,25 @@ import Nav from './components/Nav';
 import ActiveTrades from './pages/Active_trades';
 import Performance from './pages/Account_summary';
 import Instrument from './pages/Instrument';
+import { useContext, useRef, useEffect } from 'react';
+import { AppContext } from './context/app_context';
+import { candlesResquest } from './api_request';
 
 function App() {
+
+  let { setPairList } = useContext(AppContext)
+  let isFirstRender = useRef(true)
+  useEffect(() => {
+    const handleFitstLoad = async () => {
+      if (isFirstRender.current) {
+        let result = await candlesResquest()
+        setPairList(result)
+        isFirstRender.current = false
+      }
+    }
+    handleFitstLoad()
+
+  }, [setPairList])
 
 
   return (

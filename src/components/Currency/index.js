@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../context/app_context'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './index.css'
 
 const Currencies = () => {
+    let path = '/trading-avenue/instrument/?pair='
+
 
     let { pairList } = useContext(AppContext)
 
-    const pairJSX = pairList.map((item, index) => {
-        let route = `/currency/?pair=${item.instrument}`
+    const pairsJSX = pairList.map((item, index) => {
+        let route = path + item.instrument
         let closePrice = item.candles[0].mid.c
         let openPrice = item.candles[0].mid.o
         let highPrice = item.candles[0].mid.h
@@ -16,15 +18,15 @@ const Currencies = () => {
         let bullishOrBearish = closePrice > openPrice ? 'bullish' : closePrice < openPrice ? 'bearish' : 'neutral'
         if (item) {
             return (
-                <div key={index} className="fx-pair">
-                    <Link to={route} className='link'>
-                        <p className='pair-name'>{item.instrument}</p>
-                    </Link>
-                    <p>{openPrice}</p>
-                    <p>{highPrice}</p>
-                    <p>{lowPrice}</p>
+                <Link to={route} key={index} className="fx-pair">
+                    <p className='pair-name'>
+                        {item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument}
+                    </p>
+                    <p >{openPrice}</p>
+                    <p >{highPrice}</p>
+                    <p >{lowPrice}</p>
                     <p className={bullishOrBearish}>{closePrice}</p>
-                </div>
+                </Link>
             )
         }
         else {
@@ -35,13 +37,13 @@ const Currencies = () => {
     return (
         <div className='home-price-detail'>
             <div className='fx-pair header'>
-                <h3>Pairs</h3>
-                <h3>Open</h3>
-                <h3>High</h3>
-                <h3>Low</h3>
-                <h3>Close</h3>
+                <h5>Pairs</h5>
+                <h5>Open</h5>
+                <h5>High</h5>
+                <h5>Low</h5>
+                <h5>Close</h5>
             </div>
-            {pairJSX}
+            {pairsJSX}
         </div>
     )
 }

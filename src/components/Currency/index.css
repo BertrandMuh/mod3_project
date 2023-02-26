@@ -4,16 +4,32 @@
     align-items: center;
     max-width: 90%;
     margin: auto;
-    padding: 5px 0;
+    padding: 5px 20px;
+    border-bottom: 1px solid lightgrey;
+    text-decoration: none;
+    color: black
 }
 
+.fx-pair>* {
+    width: 80px;
 
-.fx-pair:hover {
-    background: pink;
 }
 
-.fx-pair.thead {
-    background: lightblue;
+h5 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.fx-pair:hover {
+    background: black;
+    color: white
+}
+
+.fx-pair.header {
+    padding: 0 20px;
+    height: 35px;
 }
 
 .bullish {
@@ -36,6 +52,7 @@
     color: darkgreen
 }
 
-.pair-name>p {
-    margin: 0;
+.home-price-detail {
+    margin: 25px auto;
+    max-width: 1000px;
 }

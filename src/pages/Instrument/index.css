@@ -1,0 +1,32 @@
+.instrument {
+    padding: 20px 10px;
+    max-width: 400px;
+    margin: 30px 0;
+}
+
+.instrument>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    padding: 5px 0;
+    border-bottom: 1px solid lightgray;
+
+
+}
+
+.instrument>.pair-name {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 5px 0;
+}
+
+.price-label {
+    font-weight: bold;
+}
+
+h3 {
+    margin: 0;
+}

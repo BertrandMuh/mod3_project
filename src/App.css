@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+p {
+  margin: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +18,11 @@
 
 .header {
   background: rgb(240, 127, 127);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
