@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+.logo {
+  color: green
+}
+
 p {
   margin: 0;
 }
@@ -17,7 +21,7 @@ p {
 }
 
 .header {
-  background: rgb(240, 127, 127);
+  background: black;
   display: flex;
   justify-content: space-between;
   align-items: center;

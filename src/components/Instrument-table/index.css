@@ -1,0 +1,46 @@
+.instrument {
+    /* padding: 10px 10px; */
+    position: relative;
+    margin: 10px 2px;
+    min-width: 90%;
+}
+
+.instru-details {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.instru-details>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    padding: 5px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.instrument>.pair-name {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 5px 0;
+
+}
+
+h3 {
+    margin: 0;
+}
+
+.pair-details-container {
+    position: relative;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    /* min-width: 300px; */
+    width: 100vmin;
+}
+
+.price-label {
+    font-weight: bold;
+}

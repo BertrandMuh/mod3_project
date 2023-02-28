@@ -9,7 +9,7 @@
 .navbar>a {
     text-decoration: none;
     margin: 0 10px;
-    color: rgb(76, 76, 76);
+    color: rgb(178, 177, 177);
     height: 100%;
     display: flex;
     justify-content: center;
@@ -19,6 +19,6 @@
 }
 
 .navbar>a:hover {
-    background: black;
+    background: green;
     color: white;
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../../context/app_context'
 import { getWeeklyBullAndBearVolume, getWeeklyData } from '../functions/useful-functions'
+import TradeButtons from '../Trade-button'
+import './index.css'
 
 const InstrumentTable = () => {
     let url = new URLSearchParams(window.location.search)
@@ -34,37 +36,39 @@ const InstrumentTable = () => {
                     <h3 className='pair-name'>
                         {item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument}
                     </h3>
-                    <div>
-                        <p className='price-label'>Open</p>
-                        <p>{openPrice}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>High</p>
-                        <p>{highPrice}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>Low</p>
-                        <p>{lowPrice}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>Close</p>
-                        <p >{closePrice}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>Daily net volume</p>
-                        <p className={bullishOrBearish}>{volume}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>Weekly net volume</p>
-                        <p className={weeklyBullishOrBearish}>{Math.abs(netWeeklyVolume)}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>Daily Price change</p>
-                        <p className={bullishOrBearish}>{change}</p>
-                    </div>
-                    <div>
-                        <p className='price-label'>Weekly Price change</p>
-                        <p className={weeklyBullOrBear}>{weeklyPriceChange}</p>
+                    <div className='instru-details'>
+                        <div>
+                            <p className='price-label'>Open</p>
+                            <p>{openPrice}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>High</p>
+                            <p>{highPrice}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>Low</p>
+                            <p>{lowPrice}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>Close</p>
+                            <p >{closePrice}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>Daily net volume</p>
+                            <p className={bullishOrBearish}>{volume}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>Weekly net volume</p>
+                            <p className={weeklyBullishOrBearish}>{Math.abs(netWeeklyVolume)}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>Daily Price change</p>
+                            <p className={bullishOrBearish}>{change}</p>
+                        </div>
+                        <div>
+                            <p className='price-label'>Weekly Price change</p>
+                            <p className={weeklyBullOrBear}>{weeklyPriceChange}</p>
+                        </div>
                     </div>
                 </div>
             )
@@ -74,7 +78,10 @@ const InstrumentTable = () => {
         }
     })
     return (
-        <div>{pairJSX}</div>
+        <div className='pair-details-container'>
+            {pairJSX}
+            <TradeButtons />
+        </div>
     )
 }
 
