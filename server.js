@@ -31,7 +31,7 @@ app.get('/test_route', (req, res) => {
 app.get('/get_candle_data', async (req, res) => {
 
     const makeApiCall = async (arr) => {
-        let additionalParams = '/candles?count=1&price=MBA&granularity=D'
+        let additionalParams = '/candles?count=21&price=MBA&granularity=D'
         let apiResponse = []
         for (const pair of arr) {
             const url = process.env.oanda_url + pair + additionalParams

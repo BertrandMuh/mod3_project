@@ -10,11 +10,13 @@ const Currencies = () => {
     let { pairList } = useContext(AppContext)
 
     const pairsJSX = pairList.map((item, index) => {
+
         let route = path + item.instrument
-        let closePrice = item.candles[0].mid.c
-        let openPrice = item.candles[0].mid.o
-        let highPrice = item.candles[0].mid.h
-        let lowPrice = item.candles[0].mid.l
+        let candles = [...item.candles].reverse()
+        let closePrice = candles[0].mid.c
+        let openPrice = candles[0].mid.o
+        let highPrice = candles[0].mid.h
+        let lowPrice = candles[0].mid.l
         let bullishOrBearish = closePrice > openPrice ? 'bullish' : closePrice < openPrice ? 'bearish' : 'neutral'
         if (item) {
             return (
