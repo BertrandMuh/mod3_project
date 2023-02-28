@@ -15,8 +15,7 @@ const Currencies = () => {
         let candles = [...item.candles].reverse()
         let closePrice = candles[0].mid.c
         let openPrice = candles[0].mid.o
-        let highPrice = candles[0].mid.h
-        let lowPrice = candles[0].mid.l
+        let volume = candles[0].volume
         let bullishOrBearish = closePrice > openPrice ? 'bullish' : closePrice < openPrice ? 'bearish' : 'neutral'
         if (item) {
             return (
@@ -25,9 +24,8 @@ const Currencies = () => {
                         {item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument}
                     </p>
                     <p >{openPrice}</p>
-                    <p >{highPrice}</p>
-                    <p >{lowPrice}</p>
                     <p className={bullishOrBearish}>{closePrice}</p>
+                    <p className={bullishOrBearish}>{volume}</p>
                 </Link>
             )
         }
@@ -39,11 +37,10 @@ const Currencies = () => {
     return (
         <div className='home-price-detail'>
             <div className='fx-pair header'>
-                <h5>Pairs</h5>
-                <h5>Open</h5>
-                <h5>High</h5>
-                <h5>Low</h5>
-                <h5>Close</h5>
+                <h6>Pairs</h6>
+                <h6>Open</h6>
+                <h6>Close</h6>
+                <h6>Volume</h6>
             </div>
             {pairsJSX}
         </div>

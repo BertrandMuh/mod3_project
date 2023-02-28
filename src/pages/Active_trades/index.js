@@ -4,7 +4,7 @@ import './index.css'
 const ActiveTrades = () => {
     return (
         <div id='trades'>
-            <h2>Active trades</h2>
+            <h2>Trades</h2>
             <div id='active-trades'>
                 <h6>Pair</h6>
                 <h6>Position</h6>

@@ -1,12 +1,26 @@
 .instrument-div {
     display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    /* padding: 5px; */
 
 }
 
-@media(max-width: 400px) {
+@media(max-width: 700px) {
     .instrument-div {
-        display: flex;
         flex-direction: column;
-        max-width: 100%;
+        min-width: 350px;
+    }
+
+    .instrument-div>div {
+        min-width: 350px;
+        width: 100%;
+    }
+}
+
+@media(max-height: 400px) {
+    .instrument-div {
+        flex-direction: column;
     }
 }

@@ -26,16 +26,16 @@ const InstrumentTable = () => {
             let netWeeklyVolume = getWeeklyBullAndBearVolume(WeeklyData)
             let bullishOrBearish = closePrice > openPrice ? 'bullish' : closePrice < openPrice ? 'bearish' : 'neutral'
             let weeklyBullishOrBearish = netWeeklyVolume > 0 ? 'bullish' : netWeeklyVolume < 0 ? 'bearish' : 'neutral'
-            let change = ((closePrice - openPrice) / openPrice * 100).toFixed(2) + '%'
-            let weeklyPriceChange = WeeklyData.length > 1 ? WeeklyData[WeeklyData.length - 1].mid.c - WeeklyData[0].mid.o : ((WeeklyData[0].mid.c - WeeklyData[0].mid.o) / WeeklyData[0].mid.o * 100).toFixed(2) + '%'
-
+            let change = ((closePrice - openPrice) / openPrice * 100).toFixed(4) + '%'
+            let weeklyPriceChange = WeeklyData.length > 1 ? (WeeklyData[WeeklyData.length - 1].mid.c - WeeklyData[0].mid.o).toFixed(4) + '%' : ((WeeklyData[0].mid.c - WeeklyData[0].mid.o) / WeeklyData[0].mid.o * 100).toFixed(4) + '%'
+            console.log();
             let weeklyBullOrBear = WeeklyData[WeeklyData.length - 1].mid.c > WeeklyData[0].mid.o ? 'bullish' : WeeklyData[WeeklyData.length - 1].mid.c < WeeklyData[0].mid.o ? 'bearish' : 'neutral'
 
             return (
-                <div key={index} className="instrument">
-                    <h3 className='pair-name'>
+                <div key={index} className="instrument container">
+                    <p className='pair-name'>
                         {item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument}
-                    </h3>
+                    </p>
                     <div className='instru-details'>
                         <div>
                             <p className='price-label'>Open</p>

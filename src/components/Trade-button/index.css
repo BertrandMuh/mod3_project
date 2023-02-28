@@ -6,26 +6,21 @@
 
 }
 
-.trade-btn.container {
-    text-align: left;
-    margin: 15px 0;
-}
 
-select {
 
-    width: 50%
-}
+
 
 .flex-space-btw {
     display: flex;
     align-items: center;
     margin: 5px auto;
+    margin-left: 5px;
 }
 
 .flex-space-btw>input {
-    width: auto;
+    width: 100%;
     min-width: 100px;
-    max-width: 120px;
+
     border: 0;
     border-bottom: 1px solid black;
     outline: none;
@@ -34,7 +29,7 @@ select {
 }
 
 .input-label {
-    min-width: 90px;
+    min-width: 120px;
     margin-block: 0;
     display: flex;
     align-items: flex-end;
@@ -56,6 +51,11 @@ select {
     margin: 5px 10px;
 }
 
+.sl-tp span {
+    font-size: 12px;
+    margin: auto 2px 2px
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -70,12 +70,15 @@ select {
 }
 
 .order {
-    width: max-content;
-    background: darkgray;
-    padding: 0;
+    width: 100%;
+    background: black;
+    padding: 5px 0;
     margin: auto;
+    margin-bottom: 20px;
     border-radius: 5px;
     height: 100%;
+    font-size: 18px;
+    color: white
 }
 
 .submit-btn-container {
@@ -91,9 +94,10 @@ select {
 }
 
 .position {
-    background: lightgray;
-    padding: 5px 0;
+    background: rgb(239, 236, 236);
+    max-width: 360px;
     border-radius: 5px;
+    margin: auto;
 }
 
 ::-webkit-scrollbar {
