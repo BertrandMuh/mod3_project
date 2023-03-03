@@ -4,8 +4,16 @@ const logger = require('morgan');
 // cross origin access 
 const cors = require('cors');
 const axios = require('axios');
+const mongoose = require('mongoose');
+const userModel = require('./models/user')
+
+const passport = require('passport');
+const session = require('express-session');
+const initializePassport = require('./config/passport-config.js')
+const bcrypt = require('bcrypt');
 
 require('dotenv').config()
+require('./config/mongoDatabase')
 
 
 const app = express();
@@ -21,6 +29,27 @@ app.use(logger('dev'))
 //parse stringified objects (JSON)
 app.use(express.json())
 
+initializePassport(
+    passport,
+    // passport tells us that they want a function that will return the correct user given an email
+    async email => {
+        let user = userModel.User.findOne({ email: email })
+        return user;
+    },
+    async id => {
+        let user = userModel.User.findById(id);
+        return user;
+    },
+);
+
+app.use(session({
+    secure: true,
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { originalMaxAge: 3600000 }
+}))
+
 // server build folder
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -28,33 +57,59 @@ app.get('/test_route', (req, res) => {
     res.send("good route!")
 })
 
+app.get('/session-info', (req, res) => {
+    res.json({
+        session: req.session
+    });
+});
+
+
 app.get('/get_candle_data', async (req, res) => {
-
-    const makeApiCall = async (arr) => {
-        let additionalParams = '/candles?count=21&price=MBA&granularity=D'
-        let apiResponse = []
-        for (const pair of arr) {
-            const url = process.env.oanda_url + pair + additionalParams
-            let response = await axios.get(url, {
-                headers: {
-                    "Authorization": `Bearer ${process.env.api_key}`,
-                    "Content-Type": "application/json"
-                }
-            });
-            apiResponse.push(response.data)
-        }
-        console.log(apiResponse);
-        return apiResponse
-    }
-
+    let additionalParams = '/candles?count=21&price=MBA&granularity=D'
     const pairsList = ['EUR_USD', 'USD_JPY', 'GBP_USD', 'AUD_USD', 'USD_CAD']
+    let apiResponse = []
 
-    let finalApiResponse = await makeApiCall(pairsList)
-    console.log(finalApiResponse);
-    res.send(finalApiResponse)
+    for (const pair of pairsList) {
+        const url = process.env.oanda_url + pair + additionalParams
+        let response = await axios.get(url, {
+            headers: {
+                "Authorization": `Bearer ${process.env.api_key}`,
+                "Content-Type": "application/json"
+            }
+        });
+        apiResponse.push(response.data)
+    }
+    res.send(apiResponse)
 })
 
+app.post('/user/sign_up', async (req, res) => {
+    delete req.body.confirmPassword
+    let hashedPassword = await bcrypt.hash(req.body.password, 10)
+    let user = {
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedPassword
+    }
+    console.log(hashedPassword);
+    console.log(user.email);
+    try {
+        let check = await userModel.User.findOne({ email: user.email })
+        // console.log(check.status);
+        if (check !== null) {
+            res.send('Email already exists')
+        }
+        else if (check === null) {
+            let databaseResponse = await userModel.User.create(user)
+            res.send('created')
+        }
 
+    } catch (error) {
+        console.log(error);
+        res.send(error)
+    }
+})
+
+// login route
 
 
 app.get('/*', (req, res) => {

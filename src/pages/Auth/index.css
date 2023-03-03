@@ -1,0 +1,123 @@
+#auth {
+    height: 100%;
+    display: flex;
+    height: max-content;
+    width: 100vw;
+    background: rgb(0, 62, 48);
+
+}
+
+.auth-div {
+    position: relative;
+    background: black;
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto 20px;
+    width: 90%;
+    max-width: 600px;
+    min-width: 300px;
+    height: 100%;
+    gap: 20px;
+}
+
+.auth-div-container {
+    height: 100%;
+    width: 40%;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.auth.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+    gap: 20px;
+    padding: 0 20px 30px
+}
+
+.auth.form>div {
+    width: max-content;
+    min-width: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 10px 0;
+}
+
+.auth.form>div label {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+}
+
+.auth.form>button {
+    max-width: 300px;
+    width: 70%;
+    min-width: 100px;
+    color: white;
+    background: green;
+    margin: auto;
+    margin-top: 20px;
+    /* margin-left: 10px; */
+
+}
+
+.auth-img-container {
+    width: 60%;
+    min-height: 100vh;
+}
+
+.auth-img-container>img {
+    object-fit: cover;
+    filter: contrast(1.5);
+    width: 100%;
+    height: 100%;
+}
+
+.form-title {
+    width: 100%;
+    text-align: left;
+}
+
+.auth-tab {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid rgb(69, 67, 67);
+    border-radius: 30px 30px 0 0;
+    background-color: red;
+}
+
+.auth-tab>div {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-tab {
+    height: 100%;
+    /* background: rgb(80, 80, 80); */
+    font-size: 1.5rem;
+}
+
+.txt-pw.input {
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid green;
+    background: inherit;
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}

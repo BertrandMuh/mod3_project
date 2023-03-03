@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const getWeeklyData = (candles) => {
     let weeklyData = []
     if (new Date().toUTCString().includes('Sat')) {
@@ -32,4 +34,14 @@ export const getWeeklyBullAndBearVolume = (WeeklyData) => {
         }
     })
     return netVolume
+}
+
+export const createUser = async (userData) => {
+    let response = await axios({
+        method: "POST",
+        url: "/user/sign_up", // route to do signup
+        data: userData
+    }
+    )
+    return response
 }

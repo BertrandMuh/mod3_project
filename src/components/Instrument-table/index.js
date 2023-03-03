@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../../context/app_context'
-import { getWeeklyBullAndBearVolume, getWeeklyData } from '../functions/useful-functions'
+import { getWeeklyBullAndBearVolume, getWeeklyData } from '../../functions/useful-functions'
 import TradeButtons from '../Trade-button'
 import './index.css'
 

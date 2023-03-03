@@ -5,6 +5,7 @@ import Disclaimer from '../../components/Disclaimer'
 import HomeSummary from '../../components/home_summary'
 import Loading from '../../components/Loading'
 import { AppContext } from '../../context/app_context'
+import './index.css'
 
 const Home = () => {
 
@@ -25,14 +26,15 @@ const Home = () => {
     // }, [setPairList])
 
     let returnPageComponents = pairList.length !== 0 ?
-        <> <HomeSummary />
+        <div className='summary-pairs'>
+            <HomeSummary />
             <Currency />
             <Disclaimer />
-        </> :
+        </div> :
         <Loading />
 
     return (
-        <div>
+        <div className='homepage'>
             <h1>Home</h1>
             {returnPageComponents}
         </div>

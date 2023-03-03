@@ -1,0 +1,13 @@
+#terms {
+    display: flex;
+    flex-direction: row;
+}
+
+#checkbox {
+    margin-right: 10px;
+}
+
+strong {
+    text-decoration: underline;
+    cursor: pointer;
+}
