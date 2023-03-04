@@ -34,7 +34,7 @@ const InstrumentTable = () => {
         if (item.instrument.replace('_', ' / ') === pair) {
             return (
                 <div key={index} className="instrument container">
-                    <InstrumentTableTemplate item={item} pair={pair} index={index} />
+                    <InstrumentTableTemplate item={item} pair={pair} setFavorite={setFavorite} favorite={favorite} />
                 </div>
             )
         }

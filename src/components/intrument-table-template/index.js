@@ -5,9 +5,7 @@ import './index.css'
 
 const InstrumentTableTemplate = (props) => {
 
-    let { favorite, setFavorite } = useContext(AppContext)
-
-    let { item, pair, index } = props
+    let { item, pair, favorite, setFavorite } = props
     let candles = [...item.candles].reverse() // copy the array contents into a new array and have the latest data at the start of the array
 
     const addToOrRemoveFromFavorite = () => {
