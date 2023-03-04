@@ -3,8 +3,28 @@
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    /* padding: 5px; */
+}
 
+.return-arrow {
+    font-size: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.return-arrow>a {
+    text-decoration: none;
+    color: black;
+}
+
+.fa-chevron-left {
+    padding: 5px 10px;
+    margin: 4px;
+}
+
+.fa-chevron-left:hover {
+    background: rgba(211, 211, 211, 0.309);
 }
 
 @media(max-width: 700px) {

@@ -1,6 +1,6 @@
-import axios from 'axios'
+// import axios from 'axios'
 import React, { useState } from 'react'
-import { createUser } from '../../functions/useful-functions'
+import { signUp } from '../../functions/useful-functions'
 import './index.css'
 
 const SignUp = () => {
@@ -18,13 +18,13 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let response = await createUser(userData)
+        let response = await signUp(userData)
         console.log(response.data);
 
     }
     return (
         <>
-            <form className='auth form' onSubmit={(event) => handleSubmit(event)}>
+            <form autoComplete='off' className='auth form' onSubmit={(event) => handleSubmit(event)}>
                 <div>
                     <label>
                         Name

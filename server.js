@@ -110,6 +110,32 @@ app.post('/user/sign_up', async (req, res) => {
 })
 
 // login route
+app.put('/user/login', async (req, res, next) => {
+    console.log(req.body);
+    // passport authentication
+    // let passport do the authentification
+    // passport.authenticate will grab the login form infos from req.body and use them to perform the authentification
+    passport.authenticate("local", (err, user, message) => {
+        console.log(message);
+        // handle the error
+        if (err) throw err;
+        if (!user) {
+            res.json({
+                message: "login failed",
+                user: false
+            })
+        } else {
+            // delete user.password
+            req.logIn(user, err => {
+                if (err) throw err;
+                res.json({
+                    message: "successfully authenticated",
+                    // remove user
+                })
+            })
+        }
+    })(req, res, next);
+})
 
 
 app.get('/*', (req, res) => {

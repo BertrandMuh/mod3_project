@@ -59,3 +59,19 @@ a.fx-pair:hover {
     margin: 25px auto;
     max-width: 1000px;
 }
+
+@media(max-width:450px) {
+    .volume {
+        display: none;
+    }
+
+    .home-price-detail {
+        width: 95%;
+    }
+
+    .fx-pair {
+        gap: 52px;
+        width: 100%;
+        padding: 5px 0;
+    }
+}

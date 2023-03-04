@@ -11,11 +11,11 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema)
 
 const tradeAndWatchlistSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: User },
     openTrades: { type: Array },
-    watchList: { type: Array }
+    watchList: { type: Array },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: User },
 })
-const tradeAndWatchlist = mongoose.model('TradesAndWatchlist', tradeAndWatchlistSchema)
+const tradeAndWatchlist = mongoose.model('trades_and_watchlist', tradeAndWatchlistSchema)
 
 const userModel = { User, tradeAndWatchlist }
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './index.css'
 
 const Currencies = () => {
-    let path = '/trading-avenue/instrument/?pair='
+    let path = '/trading-avenue.com/instrument/?pair='
 
 
     let { pairList } = useContext(AppContext)
@@ -25,7 +25,7 @@ const Currencies = () => {
                     </p>
                     <p >{openPrice}</p>
                     <p className={bullishOrBearish}>{closePrice}</p>
-                    <p className={bullishOrBearish}>{volume}</p>
+                    <p className={bullishOrBearish + ' volume'}>{volume}</p>
                 </Link>
             )
         }
@@ -40,7 +40,7 @@ const Currencies = () => {
                 <h6>Pairs</h6>
                 <h6>Open</h6>
                 <h6>Close</h6>
-                <h6>Volume</h6>
+                <h6 className='volume'>Volume</h6>
             </div>
             {pairsJSX}
         </div>

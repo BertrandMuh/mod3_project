@@ -11,13 +11,13 @@ const Nav = () => {
                 <p>Trading Avenue</p>
             </div>
             <div className="navbar">
-                <Link to='/trading-avenue'>
+                <Link to='/trading-avenue.com'>
                     Home
                 </Link>
-                <Link to='/trading-avenue/trades'>
+                <Link to='/trading-avenue.com/trades'>
                     Trades
                 </Link>
-                <Link to='/trading-avenue/account_summary'>
+                <Link to='/trading-avenue.com/account_summary'>
                     Performance
                 </Link>
             </div>

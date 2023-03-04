@@ -25,7 +25,7 @@ p {
 }
 
 .header {
-  background: black;
+  background: rgb(0, 62, 48);
   display: flex;
   justify-content: space-between;
   align-items: center;

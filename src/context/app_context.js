@@ -6,12 +6,14 @@ export const AppContext = createContext();
 const AppContextProvider = (props) => {
     const [pairList, setPairList] = useState([]);
     const [user, setUser] = useState(false)
+    const [favorite, setFavorite] = useState([])
 
 
     return (
         <AppContext.Provider value={{
             pairList, setPairList,
-            user, setUser
+            user, setUser,
+            favorite, setFavorite
 
         }}>
             {props.children}

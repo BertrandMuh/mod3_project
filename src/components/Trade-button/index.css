@@ -49,6 +49,7 @@
 .buy,
 .sell {
     margin: 5px 10px;
+    width: 100px;
 }
 
 .sl-tp span {

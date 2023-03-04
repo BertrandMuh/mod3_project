@@ -5,11 +5,14 @@ import Disclaimer from '../../components/Disclaimer'
 import HomeSummary from '../../components/home_summary'
 import Loading from '../../components/Loading'
 import { AppContext } from '../../context/app_context'
+import { getUserFromSession } from '../../functions/useful-functions'
+import Auth from '../Auth'
 import './index.css'
 
 const Home = () => {
 
-    window.history.pushState(null, null, '/trading-avenue')
+    let { user } = useContext(AppContext)
+    window.history.pushState(null, null, '/trading-avenue.com')
     let { pairList } = useContext(AppContext)
 
     // let isFirstRender = useRef(true)
@@ -34,10 +37,16 @@ const Home = () => {
         <Loading />
 
     return (
-        <div className='homepage'>
-            <h1>Home</h1>
-            {returnPageComponents}
-        </div>
+        <>
+            {user ?
+                <div className='homepage'>
+                    <h1>Home</h1>
+                    {returnPageComponents}
+                </div> :
+                <Auth />
+            }
+        </>
+
     )
 }
 
