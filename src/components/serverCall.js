@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+
 export const signUp = async (formData) => {
     let response = await axios({
         method: "POST",
@@ -30,6 +31,24 @@ export const getUserFromSession = async () => {
     }
 }
 
-export const createAndAddToFavorite = async () => {
+export const getFavoritesAndTrades = async (userId) => {
+    let response = await axios(`/get_favorite_and_trades/${userId}`)
+    return response;
+}
+export const createOrAddToFavorite = async (favorite, userId, pair) => {
+    let dataFromDatabase = await getFavoritesAndTrades(userId)
+    console.log(pair, userId);
+    if (dataFromDatabase.data === '') {
+        let response = await axios({
+            method: "POST",
+            url: "/create_favorite_list",
+            data: { pair, userId }
+        })
+        console.log(response);
+    }
+}
 
+export const getFavorite = async () => {
+    let response = await axios('/get_favorite')
+    console.log(response.data);
 }

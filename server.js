@@ -99,7 +99,8 @@ app.post('/user/sign_up', async (req, res) => {
             res.send('Email already exists')
         }
         else if (check === null) {
-            let databaseResponse = await userModel.User.create(user)
+            let userResponse = await userModel.User.create(user)
+            let favoriteAndTradeResponse = await userModel.tradeAndWatchlist.create({ user: userResponse._id })
             res.send('created')
         }
 
@@ -136,6 +137,30 @@ app.put('/user/login', async (req, res, next) => {
         }
     })(req, res, next);
 })
+
+app.get('/get_favorite_and_trades/:userId', async (req, res) => {
+    console.log(req.params.userId);
+    let response = await userModel.tradeAndWatchlist.findOne({ user: req.params.userId })
+    console.log(response);
+    res.send(response)
+})
+
+app.get('/get_favorite', async (req, res) => {
+    let response = await userModel.tradeAndWatchlist.find({})
+    res.send(response)
+})
+
+app.post('/create_favorite_list', async (req, res) => {
+    console.log(req.body);
+    let data = {
+        watchList: [req.body.pair],
+        user: req.body.userId
+    }
+    console.log(data);
+    let response = await userModel.tradeAndWatchlist.create(req.data)
+    console.log(response);
+})
+
 
 
 app.get('/*', (req, res) => {

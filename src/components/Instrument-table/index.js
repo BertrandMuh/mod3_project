@@ -9,32 +9,39 @@ const InstrumentTable = () => {
     let url = new URLSearchParams(window.location.search)
     let pair = url.get('pair').replace('_', ' / ')
 
-    let { pairList, favorite, setFavorite } = useContext(AppContext)
+    let { pairList, favorite, setFavorite, user } = useContext(AppContext)
 
     // like or unlike the currency pair
     useEffect(() => {
-        console.log(favorite);
+        console.log('table');
+        let likeButton = document.getElementsByClassName('fa-heart')[0];
+
         let favoriteList = [...favorite]
-        if (favoriteList.length > 0) {
-            let likeButton = document.getElementsByClassName('fa-heart')[0];
-            favoriteList.forEach(itemName => {
-                if (pair === itemName) {
-                    if (likeButton !== undefined) {
-                        likeButton.classList.add('favorite')
-                    }
-                }
-                else {
-                    likeButton.classList.remove('favorite')
-                }
-            })
+        if (favoriteList.length === 0) {
+            likeButton.classList.remove('favorite')
         }
+        favoriteList.forEach(itemName => {
+            let likeButton = document.getElementsByClassName('fa-heart')[0];
+            if (pair === itemName) {
+                if (likeButton !== undefined) {
+                    console.log(favorite);
+                    likeButton.classList.add('favorite')
+                }
+            }
+            else {
+                console.log(favorite);
+                likeButton.classList.remove('favorite')
+            }
+        })
+
+
     }, [favorite, pair])
 
     const pairJSX = pairList.map((item, index) => {
         if (item.instrument.replace('_', ' / ') === pair) {
             return (
                 <div key={index} className="instrument container">
-                    <InstrumentTableTemplate item={item} pair={pair} setFavorite={setFavorite} favorite={favorite} />
+                    <InstrumentTableTemplate item={item} pair={pair} setFavorite={setFavorite} favorite={favorite} user={user} />
                 </div>
             )
         }

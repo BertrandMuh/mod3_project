@@ -1,12 +1,14 @@
 import React from 'react'
+
 import { getDailyAndWeeklyData } from '../../functions/useful-functions'
+import { createOrAddToFavorite } from '../serverCall'
 import './index.css'
 
 const InstrumentTableTemplate = (props) => {
 
-    let { item, pair, favorite, setFavorite } = props
+    let { item, pair, favorite, setFavorite, user } = props
     let candles = [...item.candles].reverse() // copy the array contents into a new array and have the latest data at the start of the array
-
+    let pairName = item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument
     const addToOrRemoveFromFavorite = () => {
         let favoriteList = [...favorite]
         let newFavoriteList = favoriteList.includes(pair) ? (() => {
@@ -16,16 +18,17 @@ const InstrumentTableTemplate = (props) => {
             favoriteList.push(pair)
             return favoriteList
         })()
-        console.log(newFavoriteList);
         setFavorite(newFavoriteList)
     }
+
+    // createOrAddToFavorite(favorite, user._id, pairName)
 
     let daily = getDailyAndWeeklyData(candles)
     return (
         <>
             <p className='pair-name'>
                 <span>
-                    {item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument}
+                    {pairName}
                 </span>
                 <i className="fa fa-heart" onClick={addToOrRemoveFromFavorite}></i>
             </p>

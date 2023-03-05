@@ -1,19 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../context/app_context'
+import { getFavorite, getFavoritesAndTrades } from '../serverCall'
 
 const Watchlist = () => {
 
-    const { favorite, user } = useContext(AppContext)
-    const createAndAddToFavorite = async () => {
-        let favoriteList = [...favorite]
-        if (favoriteList.length > 0) {
-        }
-    }
-    const getFavoritePairs = async () => {
-        console.log(user);
-    }
-    getFavoritePairs()
+    const { favorite, user, setFavorite, openTrade, setOpenTrade } = useContext(AppContext)
 
+    useEffect(() => {
+        const makeAServerCall = async () => {
+            const serverResponse = await getFavoritesAndTrades(user._id)
+            setFavorite(serverResponse.data.watchList)
+            setOpenTrade(serverResponse.data.openTrades)
+        }
+        makeAServerCall()
+
+    }, [user, setFavorite, setOpenTrade])
+    // console.log(favorite, openTrade);
+
+    getFavorite()
     return (
         <div>Watchlist</div>
     )
