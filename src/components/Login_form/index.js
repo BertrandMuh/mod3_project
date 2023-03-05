@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/app_context';
-import { getUserFromSession, logIn } from '../../functions/useful-functions';
+import { getUserFromSession, logIn } from '../serverCall';
+// import { getUserFromSession, logIn } from '../../functions/useful-functions';
 import './index.css'
 
 const Login = () => {
@@ -10,7 +11,6 @@ const Login = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate()
     //   const [disabled, setDisabled] = useState(true);
-
 
     // useEffect(() => {
     //     setDisabled(formState.email && formState.password ? false : true);

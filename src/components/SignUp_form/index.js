@@ -1,6 +1,6 @@
 // import axios from 'axios'
 import React, { useState } from 'react'
-import { signUp } from '../../functions/useful-functions'
+import { signUp } from '../serverCall';
 import './index.css'
 
 const SignUp = () => {

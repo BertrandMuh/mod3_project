@@ -11,8 +11,8 @@ import Instrument from './pages/Instrument';
 import { useContext, useRef, useEffect } from 'react';
 import { AppContext } from './context/app_context';
 import { candlesResquest } from './api_request';
-import { getUserFromSession } from './functions/useful-functions';
 import Auth from './pages/Auth';
+import { getUserFromSession } from './components/serverCall';
 
 function App() {
   let { user, setUser, setPairList } = useContext(AppContext)

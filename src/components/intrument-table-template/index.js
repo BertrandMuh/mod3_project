@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { getDailyAndWeeklyData } from '../../functions/useful-functions'
-import { AppContext } from '../../context/app_context'
 import './index.css'
 
 const InstrumentTableTemplate = (props) => {
