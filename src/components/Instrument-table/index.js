@@ -11,16 +11,15 @@ const InstrumentTable = () => {
     if (url.get('pair')) {
         pair = url.get('pair').replace('_', ' / ')
     }
-    let hasPair = url.get('pair')
 
-
-    let { pairList, favorite, setFavorite, user } = useContext(AppContext)
+    let { pairList, favorite, setFavorite, user, openTrades, closeTrades } = useContext(AppContext)
 
     // like or unlike the currency pair
     useEffect(() => {
-        if (hasPair) {
 
-            let likeButton = document.getElementsByClassName('fa-heart')[0];
+        let likeButton = document.getElementsByClassName('fa-heart')[0];
+
+        if (favorite !== undefined) {
 
             let favoriteList = [...favorite]
 
@@ -35,13 +34,13 @@ const InstrumentTable = () => {
                 }
             }
         }
-    }, [favorite, pair, hasPair])
+    }, [favorite, pair])
 
     const pairJSX = pairList.map((item, index) => {
         if (item.instrument.replace('_', ' / ') === pair) {
             return (
                 <div key={index} className="instrument container">
-                    <InstrumentTableTemplate item={item} pair={pair} setFavorite={setFavorite} favorite={favorite} user={user} />
+                    <InstrumentTableTemplate item={item} pair={pair} setFavorite={setFavorite} favorite={favorite} user={user} openTrades={openTrades} closeTrades={closeTrades} />
                 </div>
             )
         }

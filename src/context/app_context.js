@@ -9,9 +9,9 @@ const AppContextProvider = (props) => {
     const [pairList, setPairList] = useState([]);
     const [user, setUser] = useState(false);
     //trades and favorites
-    const [favorite, setFavorite] = useState([]);
-    const [openTrades, setOpenTrades] = useState([])
-    const [closeTrades, setCloseTrades] = useState([])
+    const [favorite, setFavorite] = useState();
+    const [openTrades, setOpenTrades] = useState()
+    const [closeTrades, setCloseTrades] = useState()
 
 
 

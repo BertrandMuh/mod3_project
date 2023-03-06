@@ -148,8 +148,8 @@ app.get('/get_favorite_and_trades/:userId', async (req, res) => {
 
 app.put('/update_trades_favorite_lists/:userId', async (req, res) => {
     console.log(req.body, req.params.userId, 'jjjj');
-    // let response = await userModel.tradeAndWatchlist.findOneAndUpdate({ user: req.params.userId }, req.body, { new: true })
-    // console.log(response, 1);
+    let response = await userModel.tradeAndWatchlist.findOneAndUpdate({ user: req.params.userId }, req.body, { new: true })
+    console.log(response, 1);
     res.send('update')
 })
 

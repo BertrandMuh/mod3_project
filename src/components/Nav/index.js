@@ -1,26 +1,38 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/app_context'
-import { updateTradesLists } from '../serverCall'
+import { getFavoritesAndTrades, updateTradesLists } from '../serverCall'
 import './index.css'
 
 const Nav = () => {
-    const { favorite, openTrades, closeTrades, user } = useContext(AppContext)
+    const { favorite, openTrades, closeTrades, user, setFavorite, setCloseTrades, setOpenTrades } = useContext(AppContext)
     // let url = new URLSearchParams(window.location.search)
-    // useEffect(() => {
-    //     let tradesLists = {
-    //         openTrades,
-    //         watchList: favorite,
-    //         closeTrades
-    //     }
-    //     console.log(tradesLists);
-    //     const makeAServerCall = async (data, userId) => {
-    //         let serverRequest = await updateTradesLists(data, userId)
-    //         console.log(serverRequest);
-    //     }
-    //     makeAServerCall(tradesLists, user)
+    useEffect(() => {
+        if (user && favorite !== undefined) {
+            let tradesLists = {
+                openTrades,
+                watchList: favorite,
+                closeTrades
+            }
+            const makeAServerCall = async (data, userId) => {
+                let serverRequest = await updateTradesLists(data, userId)
 
-    // }, [favorite, openTrades, closeTrades, user])
+            }
+            makeAServerCall(tradesLists, user)
+        }
+
+        else if (user && favorite === undefined) {
+            const makeAServerCall = async () => {
+                let response = await getFavoritesAndTrades(user._id)
+                setFavorite(response.data.watchList)
+                setCloseTrades(response.data.closeTrades)
+                setOpenTrades(response.data.openTrades)
+
+            }
+            makeAServerCall(user._id)
+        }
+
+    }, [favorite, openTrades, closeTrades, user, setCloseTrades, setFavorite, setOpenTrades])
 
     return (
         <div className='header nav'>

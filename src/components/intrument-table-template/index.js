@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { getDailyAndWeeklyData } from '../../functions/useful-functions'
 import { createOrAddToFavorite, updateTradesLists } from '../serverCall'
@@ -10,11 +10,7 @@ const InstrumentTableTemplate = (props) => {
     let candles = [...item.candles].reverse() // copy the array contents into a new array and have the latest data at the start of the array
     let pairName = item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument
     const addToOrRemoveFromFavorite = () => {
-        let tradesLists = {
-            openTrades,
-            watchList: favorite,
-            closeTrades
-        }
+
         let favoriteList = [...favorite]
         let newFavoriteList = favoriteList.includes(pair) ? (() => {
             favoriteList.splice(favoriteList.indexOf(pair), 1)
@@ -24,9 +20,23 @@ const InstrumentTableTemplate = (props) => {
             return favoriteList
         })()
         setFavorite(newFavoriteList)
-        updateTradesLists(tradesLists, user._id)
-
     }
+    // useEffect(() => {
+    //     if (user) {
+    //         let tradesLists = {
+    //             openTrades,
+    //             watchList: favorite,
+    //             closeTrades
+    //         }
+    //         console.log(tradesLists);
+    //         const makeAServerCall = async (data, userId) => {
+    //             let serverRequest = await updateTradesLists(data, userId)
+    //             console.log(serverRequest);
+    //         }
+    //         makeAServerCall(tradesLists, user)
+    //     }
+
+    // }, [favorite, openTrades, closeTrades, user])
 
     // createOrAddToFavorite(favorite, user._id, pairName)
 

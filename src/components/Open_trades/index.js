@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OpenTrades = () => {
+const OpenTrades = (props) => {
     return (
         <div>OpenTrades</div>
     )

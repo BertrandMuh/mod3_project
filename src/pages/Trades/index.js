@@ -6,25 +6,25 @@ import { AppContext } from '../../context/app_context'
 import './index.css'
 
 const ActiveTrades = () => {
-    let { user, setFavorite, setOpenTrades } = useContext(AppContext)
+    let { user, favorite, openTrades } = useContext(AppContext)
 
-
-    useEffect(() => {
-        const makeAServerCall = async (user) => {
-            let response = await getFavoritesAndTrades(user._id)
-            console.log(response);
-            return response
-        }
-        makeAServerCall(user)
-        // console.log(serverResponse);
-    }, [user])
+    // console.log(favorite, OpenTrades);
+    // useEffect(() => {
+    //     const makeAServerCall = async (user) => {
+    //         let response = await getFavoritesAndTrades(user._id)
+    //         console.log(response);
+    //         return response
+    //     }
+    //     makeAServerCall(user)
+    //     // console.log(serverResponse);
+    // }, [user])
 
     return (
         <div id='trades'>
             {/* <h2>Trades</h2> */}
             <div>
-                <OpenTrades />
-                <Watchlist />
+                <OpenTrades OpenTrades={openTrades} />
+                <Watchlist favorite={favorite} />
             </div>
             {/* <div id='active-trades'>
                 <>Pair</>
