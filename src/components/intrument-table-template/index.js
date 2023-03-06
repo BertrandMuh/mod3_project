@@ -1,15 +1,20 @@
 import React from 'react'
 
 import { getDailyAndWeeklyData } from '../../functions/useful-functions'
-import { createOrAddToFavorite } from '../serverCall'
+import { createOrAddToFavorite, updateTradesLists } from '../serverCall'
 import './index.css'
 
 const InstrumentTableTemplate = (props) => {
 
-    let { item, pair, favorite, setFavorite, user } = props
+    let { item, pair, favorite, setFavorite, user, openTrades, closeTrades } = props
     let candles = [...item.candles].reverse() // copy the array contents into a new array and have the latest data at the start of the array
     let pairName = item.instrument.includes('_') ? item.instrument.replace('_', ' / ') : item.instrument
     const addToOrRemoveFromFavorite = () => {
+        let tradesLists = {
+            openTrades,
+            watchList: favorite,
+            closeTrades
+        }
         let favoriteList = [...favorite]
         let newFavoriteList = favoriteList.includes(pair) ? (() => {
             favoriteList.splice(favoriteList.indexOf(pair), 1)
@@ -19,6 +24,8 @@ const InstrumentTableTemplate = (props) => {
             return favoriteList
         })()
         setFavorite(newFavoriteList)
+        updateTradesLists(tradesLists, user._id)
+
     }
 
     // createOrAddToFavorite(favorite, user._id, pairName)
@@ -59,11 +66,11 @@ const InstrumentTableTemplate = (props) => {
                 </div>
                 <div>
                     <p className='price-label'>Daily Price change</p>
-                    <p className={daily.bullishOrBearish}>{daily.change}</p>
+                    <p className={daily.bullishOrBearish}>{daily.change}%</p>
                 </div>
                 <div>
                     <p className='price-label'>Weekly Price change</p>
-                    <p className={daily.weeklyBullOrBear}>{daily.weeklyPriceChange}</p>
+                    <p className={daily.weeklyBullOrBear}>{daily.weeklyPriceChange}%</p>
                 </div>
             </div>
         </>

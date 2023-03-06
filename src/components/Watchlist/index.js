@@ -9,15 +9,15 @@ const Watchlist = () => {
     useEffect(() => {
         const makeAServerCall = async () => {
             const serverResponse = await getFavoritesAndTrades(user._id)
-            setFavorite(serverResponse.data.watchList)
-            setOpenTrade(serverResponse.data.openTrades)
+            // setFavorite(serverResponse.data.watchList)
+            // setOpenTrade(serverResponse.data.openTrades)
         }
         makeAServerCall()
 
     }, [user, setFavorite, setOpenTrade])
     // console.log(favorite, openTrade);
 
-    getFavorite()
+
     return (
         <div>Watchlist</div>
     )

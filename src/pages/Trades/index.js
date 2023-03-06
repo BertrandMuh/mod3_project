@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import OpenTrades from '../../components/Open_trades'
+import { getFavoritesAndTrades } from '../../components/serverCall'
 import Watchlist from '../../components/Watchlist'
+import { AppContext } from '../../context/app_context'
 import './index.css'
 
 const ActiveTrades = () => {
+    let { user, setFavorite, setOpenTrades } = useContext(AppContext)
+
+
+    useEffect(() => {
+        const makeAServerCall = async (user) => {
+            let response = await getFavoritesAndTrades(user._id)
+            console.log(response);
+            return response
+        }
+        makeAServerCall(user)
+        // console.log(serverResponse);
+    }, [user])
+
     return (
         <div id='trades'>
             {/* <h2>Trades</h2> */}

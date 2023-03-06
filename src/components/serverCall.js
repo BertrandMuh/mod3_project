@@ -48,7 +48,13 @@ export const createOrAddToFavorite = async (favorite, userId, pair) => {
     }
 }
 
-export const getFavorite = async () => {
-    let response = await axios('/get_favorite')
-    console.log(response.data);
+
+
+export const updateTradesLists = async (pairData, user) => {
+    let response = await axios({
+        method: 'PUT',
+        url: '/update_trades_favorite_lists/' + user._id,
+        data: pairData
+    })
+    return response;
 }

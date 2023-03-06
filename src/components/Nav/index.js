@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { AppContext } from '../../context/app_context'
+import { updateTradesLists } from '../serverCall'
 import './index.css'
 
 const Nav = () => {
+    const { favorite, openTrades, closeTrades, user } = useContext(AppContext)
+    // let url = new URLSearchParams(window.location.search)
+    // useEffect(() => {
+    //     let tradesLists = {
+    //         openTrades,
+    //         watchList: favorite,
+    //         closeTrades
+    //     }
+    //     console.log(tradesLists);
+    //     const makeAServerCall = async (data, userId) => {
+    //         let serverRequest = await updateTradesLists(data, userId)
+    //         console.log(serverRequest);
+    //     }
+    //     makeAServerCall(tradesLists, user)
+
+    // }, [favorite, openTrades, closeTrades, user])
+
     return (
         <div className='header nav'>
             <div className='logo'>

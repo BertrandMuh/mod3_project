@@ -47,11 +47,16 @@ function App() {
             <Route path='/trading-avenue.com/trades' element={<ActiveTrades />} />
             <Route path='/trading-avenue.com/account_summary' element={<Performance />} />
             <Route path='/trading-avenue.com/instrument' element={<Instrument />} />
-            <Route path='/:any' element={<Home />} />
+            <Route path='/*' element={<Home />} />
           </Routes>
         </div>
         :
-        <Auth />
+        <Routes>
+          <Route path='/' element={<Auth />} />
+          <Route path='/trading-avenue.com/auth' element={<Auth />} />
+          <Route path='/*' element={<Auth />} />
+        </Routes>
+
       }
     </>
   );

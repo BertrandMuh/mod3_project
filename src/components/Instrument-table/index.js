@@ -7,35 +7,35 @@ import './index.css'
 
 const InstrumentTable = () => {
     let url = new URLSearchParams(window.location.search)
-    let pair = url.get('pair').replace('_', ' / ')
+    let pair
+    if (url.get('pair')) {
+        pair = url.get('pair').replace('_', ' / ')
+    }
+    let hasPair = url.get('pair')
+
 
     let { pairList, favorite, setFavorite, user } = useContext(AppContext)
 
     // like or unlike the currency pair
     useEffect(() => {
-        console.log('table');
-        let likeButton = document.getElementsByClassName('fa-heart')[0];
+        if (hasPair) {
 
-        let favoriteList = [...favorite]
-        if (favoriteList.length === 0) {
-            likeButton.classList.remove('favorite')
-        }
-        favoriteList.forEach(itemName => {
             let likeButton = document.getElementsByClassName('fa-heart')[0];
-            if (pair === itemName) {
-                if (likeButton !== undefined) {
-                    console.log(favorite);
+
+            let favoriteList = [...favorite]
+
+            if (favoriteList.includes(pair)) {
+                if (!likeButton.classList.contains('favorite')) {
                     likeButton.classList.add('favorite')
                 }
             }
-            else {
-                console.log(favorite);
-                likeButton.classList.remove('favorite')
+            else if (!favoriteList.includes(pair)) {
+                if (likeButton.classList.contains('favorite')) {
+                    likeButton.classList.remove('favorite')
+                }
             }
-        })
-
-
-    }, [favorite, pair])
+        }
+    }, [favorite, pair, hasPair])
 
     const pairJSX = pairList.map((item, index) => {
         if (item.instrument.replace('_', ' / ') === pair) {

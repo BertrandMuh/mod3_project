@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Login from '../../components/Login_form'
 import SignUp from '../../components/SignUp_form'
 import './index.css'
 
 const Auth = () => {
-    window.history.pushState(null, null, '/trading-avenue.com/auth')
+
     const [formTab, setFormTab] = useState('Sign up')
 
     const handleClick = (el) => {

@@ -5,7 +5,7 @@ import Disclaimer from '../../components/Disclaimer'
 import HomeSummary from '../../components/home_summary'
 import Loading from '../../components/Loading'
 import { AppContext } from '../../context/app_context'
-import { getUserFromSession } from '../../functions/useful-functions'
+// import { getUserFromSession } from '../../functions/useful-functions'
 import Auth from '../Auth'
 import './index.css'
 

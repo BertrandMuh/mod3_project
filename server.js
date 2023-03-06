@@ -145,20 +145,12 @@ app.get('/get_favorite_and_trades/:userId', async (req, res) => {
     res.send(response)
 })
 
-app.get('/get_favorite', async (req, res) => {
-    let response = await userModel.tradeAndWatchlist.find({})
-    res.send(response)
-})
 
-app.post('/create_favorite_list', async (req, res) => {
-    console.log(req.body);
-    let data = {
-        watchList: [req.body.pair],
-        user: req.body.userId
-    }
-    console.log(data);
-    let response = await userModel.tradeAndWatchlist.create(req.data)
-    console.log(response);
+app.put('/update_trades_favorite_lists/:userId', async (req, res) => {
+    console.log(req.body, req.params.userId, 'jjjj');
+    // let response = await userModel.tradeAndWatchlist.findOneAndUpdate({ user: req.params.userId }, req.body, { new: true })
+    // console.log(response, 1);
+    res.send('update')
 })
 
 
