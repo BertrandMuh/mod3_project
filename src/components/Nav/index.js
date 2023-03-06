@@ -27,7 +27,7 @@ const Nav = () => {
                 setFavorite(response.data.watchList)
                 setCloseTrades(response.data.closeTrades)
                 setOpenTrades(response.data.openTrades)
-
+                console.log('nav');
             }
             makeAServerCall(user._id)
         }

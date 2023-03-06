@@ -1,11 +1,16 @@
 #trades {
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 #active-trades {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 500px;
-    color: red;
+    color: red; */
 }

@@ -21,24 +21,7 @@ const InstrumentTableTemplate = (props) => {
         })()
         setFavorite(newFavoriteList)
     }
-    // useEffect(() => {
-    //     if (user) {
-    //         let tradesLists = {
-    //             openTrades,
-    //             watchList: favorite,
-    //             closeTrades
-    //         }
-    //         console.log(tradesLists);
-    //         const makeAServerCall = async (data, userId) => {
-    //             let serverRequest = await updateTradesLists(data, userId)
-    //             console.log(serverRequest);
-    //         }
-    //         makeAServerCall(tradesLists, user)
-    //     }
 
-    // }, [favorite, openTrades, closeTrades, user])
-
-    // createOrAddToFavorite(favorite, user._id, pairName)
 
     let daily = getDailyAndWeeklyData(candles)
     return (

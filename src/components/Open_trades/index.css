@@ -1,0 +1,13 @@
+.open-trades-table {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.open-trades-table>* {
+    display: flex;
+    justify-content: space-between;
+}
+
+.open-trades-container {
+    width: 100%;
+}

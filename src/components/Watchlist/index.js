@@ -1,32 +1,30 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../context/app_context'
 import { getFavorite, getFavoritesAndTrades } from '../serverCall'
+import './index.css'
 
 const Watchlist = (props) => {
     const { favorite } = props
     const { user, setFavorite, openTrade, setOpenTrade } = useContext(AppContext)
-    console.log(favorite);
 
+    let listJSX
     if (favorite !== undefined) {
         let favoriteList = [...favorite]
-        let listJSX = favoriteList.map((item, idx) => {
-            // return ()
+        listJSX = favoriteList.map((item) => {
+            return (
+                <div className='favorite-pair' key={item}>
+                    <p className='fav-pair-name'>{item}</p>
+                    <i className="fa fa-trash-o"></i>
+                </div>
+            )
         })
     }
-    // useEffect(() => {
-    //     const makeAServerCall = async () => {
-    //         const serverResponse = await getFavoritesAndTrades(user._id)
-    //         // setFavorite(serverResponse.data.watchList)
-    //         // setOpenTrade(serverResponse.data.openTrades)
-    //     }
-    //     makeAServerCall()
-
-    // }, [user, setFavorite, setOpenTrade])
-    // console.log(favorite, openTrade);
-
 
     return (
-        <div>Watchlist</div>
+        <div id='favorite-container'>
+            <p className='title'>Favorites</p>
+            {listJSX}
+        </div>
     )
 }
 
