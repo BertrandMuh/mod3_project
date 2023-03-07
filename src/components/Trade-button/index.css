@@ -53,6 +53,10 @@
     width: 100px;
 }
 
+.invalid {
+    border: 1.5px solid red;
+}
+
 .sl-tp span {
     font-size: 12px;
     margin: auto 2px 2px
@@ -91,8 +95,14 @@
 .submit.btn {
     background: green;
     color: white;
+    padding: 0;
+    margin: 10px;
     border: 5px;
     width: 50%;
+}
+
+.submit.btn:hover {
+    background: green;
 }
 
 .position {

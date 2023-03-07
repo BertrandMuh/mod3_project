@@ -49,10 +49,16 @@ const SignUp = () => {
                     </label>
                     <input type='password' name='confirmPassword' className='txt-pw input' placeholder='Confirm password...' onChange={(e) => handleChange(e)} />
                 </div>
-                <div id='terms'>
+                <div id='terms' >
                     <input id='checkbox' type="checkbox" />
                     <label>I agree to the <strong>Terms of User</strong></label>
                 </div>
+
+                <label className='error'>
+                    {
+
+                    }
+                </label>
                 <button className='sign-up btn' type='submit'>Sign Up</button>
             </form>
         </>

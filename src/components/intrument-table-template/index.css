@@ -45,6 +45,10 @@ h3 {
     margin: 0;
 }
 
+.price-label {
+    font-weight: bold;
+}
+
 .pair-details-container {
     position: relative;
     max-width: 500px;
@@ -57,9 +61,7 @@ h3 {
 
 }
 
-.price-label {
-    font-weight: bold;
-}
+
 
 @media(max-height: 400px) {
 

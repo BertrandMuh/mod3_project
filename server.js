@@ -101,6 +101,7 @@ app.post('/user/sign_up', async (req, res) => {
         else if (check === null) {
             let userResponse = await userModel.User.create(user)
             let favoriteAndTradeResponse = await userModel.tradeAndWatchlist.create({ user: userResponse._id })
+
             res.send('created')
         }
 
@@ -136,6 +137,10 @@ app.put('/user/login', async (req, res, next) => {
             })
         }
     })(req, res, next);
+})
+
+app.get('/user/logout', async (req, res) => {
+
 })
 
 app.get('/get_favorite_and_trades/:userId', async (req, res) => {

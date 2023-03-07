@@ -34,6 +34,10 @@ const InstrumentTableTemplate = (props) => {
             </p>
             <div className='instru-details'>
                 <div>
+                    <p className='price-label'>Current price</p>
+                    <p>{daily.currentPrice}</p>
+                </div>
+                <div>
                     <p className='price-label'>Open</p>
                     <p>{daily.openPrice}</p>
                 </div>
@@ -46,7 +50,7 @@ const InstrumentTableTemplate = (props) => {
                     <p>{daily.lowPrice}</p>
                 </div>
                 <div>
-                    <p className='price-label'>Close</p>
+                    <p className='price-label'>Previous close</p>
                     <p >{daily.closePrice}</p>
                 </div>
                 <div>
@@ -54,13 +58,14 @@ const InstrumentTableTemplate = (props) => {
                     <p className={daily.bullishOrBearish}>{daily.volume}</p>
                 </div>
                 <div>
-                    <p className='price-label'>Weekly net volume</p>
-                    <p className={daily.weeklyBullishOrBearish}>{Math.abs(daily.weeklyNetVolume)}</p>
-                </div>
-                <div>
                     <p className='price-label'>Daily Price change</p>
                     <p className={daily.bullishOrBearish}>{daily.change}%</p>
                 </div>
+                <div>
+                    <p className='price-label'>Weekly net volume</p>
+                    <p className={daily.weeklyBullishOrBearish}>{Math.abs(daily.weeklyNetVolume)}</p>
+                </div>
+
                 <div>
                     <p className='price-label'>Weekly Price change</p>
                     <p className={daily.weeklyBullOrBear}>{daily.weeklyPriceChange}%</p>

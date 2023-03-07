@@ -45,6 +45,10 @@ const Login = () => {
         if (user) {
             navigate('/trading-avenue.com')
         }
+        else {
+            console.log(user);
+            document.getElementsByClassName('error')[0].textContent = 'Email or password incorrect'
+        }
     }
 
     return (
@@ -62,6 +66,7 @@ const Login = () => {
                     </label>
                     <input type='password' name='password' className='txt-pw input' placeholder='Password...' onChange={(evt) => handleChange(evt)} />
                 </div>
+                <label className='error'></label>
                 <button className='log-in btn' type='submit'>Sign in</button>
             </form>
         </>

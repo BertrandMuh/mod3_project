@@ -35,9 +35,10 @@ const InstrumentTable = () => {
             }
         }
     }, [favorite, pair])
-
+    let element
     const pairJSX = pairList.map((item, index) => {
         if (item.instrument.replace('_', ' / ') === pair) {
+            element = [...item.candles].reverse()
             return (
                 <div key={index} className="instrument container">
                     <InstrumentTableTemplate item={item} pair={pair} setFavorite={setFavorite} favorite={favorite} user={user} openTrades={openTrades} closeTrades={closeTrades} />
@@ -50,9 +51,8 @@ const InstrumentTable = () => {
     })
     return (
         <div className='pair-details-container'>
-
             {pairJSX}
-            <TradeButtons />
+            <TradeButtons item={element} />
         </div>
     )
 }
