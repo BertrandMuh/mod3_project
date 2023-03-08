@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/app_context';
-import { getUserFromSession, logIn } from '../serverCall';
+import { getUserFromSession, logIn } from '../server_call/serverCall';
+// import { getUserFromSession, logIn } from '../server_call/serverCall';
 // import { getUserFromSession, logIn } from '../../functions/useful-functions';
 import './index.css'
 
 const Login = () => {
+    // getUserFromSession
     let { setUser } = useContext(AppContext);
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [error, setError] = useState("");

@@ -1,6 +1,6 @@
 // import axios from 'axios'
 import React, { useState } from 'react'
-import { signUp } from '../serverCall';
+import { signUp } from '../server_call/serverCall';
 import './index.css'
 
 const SignUp = () => {

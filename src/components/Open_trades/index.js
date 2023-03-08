@@ -8,8 +8,6 @@ import './index.css'
 const OpenTrades = () => {
     let { pairList, openTrades, setOpenTrades, closeTrades, setCloseTrades } = useContext(AppContext)
 
-    let netProfit = 0;
-
     useEffect(() => { }, [openTrades])
 
     const closeTrade = async (e) => {
@@ -30,11 +28,10 @@ const OpenTrades = () => {
         let openTradesList = [...openTrades]
         let closeTradesList = [...closeTrades]
         let instrument = openTradesList[id]
-        let profit = instrument.position === 'Sell' ? ((+instrument.entry - +candles[0].mid.c) * (instrument.pair.includes('JPY') ? 100 : 10000)).toFixed(1) : ((+candles[0].mid.c - +instrument.entry) * (instrument.pair.includes('JPY') ? 100 : 10000));
+
 
         let tradeUpdateData = {
             exitPrice,
-            profit: profit,
             exitDate: new Date().toUTCString(),
         }
 
@@ -42,7 +39,7 @@ const OpenTrades = () => {
         console.log(closeTradeData.entry, exitPrice, instrument.entry - exitPrice, closeTradeData);
         openTradesList.splice(id, 1)
         setOpenTrades(openTradesList)
-        closeTradesList.push(instrument)
+        closeTradesList.push(closeTradeData)
         setCloseTrades(closeTradesList)
     }
 
@@ -53,14 +50,13 @@ const OpenTrades = () => {
             if (obj.instrument === trade.pair) {
                 candles = [...obj.candles].reverse()
                 profitLoss = trade.position === 'Sell' ? ((+trade.entry - +candles[0].mid.c) * (trade.pair.includes('JPY') ? 100 : 10000)).toFixed(1) : ((+candles[0].mid.c - +trade.entry) * (trade.pair.includes('JPY') ? 100 : 10000))
-                netProfit = +netProfit + +Number(profitLoss).toFixed(1)
             }
         })
 
         let className = +profitLoss > 0 ? 'up' : 'down'
 
         return (
-            <div key={trade.pair} className='open-trades rows'>
+            <div key={idx} className='open-trades rows'>
                 <Link to={'/trading-avenue.com/instrument/?pair=' + trade.pair}>{trade.pair.replace('_', ' / ')}
                 </Link>
                 <p>{trade.position}</p>

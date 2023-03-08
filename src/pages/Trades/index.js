@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import OpenTrades from '../../components/Open_trades'
-import { getFavoritesAndTrades } from '../../components/serverCall'
+import { getFavoritesAndTrades } from '../../components/server_call/serverCall'
 import Watchlist from '../../components/Watchlist'
 import { AppContext } from '../../context/app_context'
 import './index.css'

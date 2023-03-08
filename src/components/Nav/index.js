@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/app_context'
-import { getFavoritesAndTrades, updateTradesLists } from '../serverCall'
+import { getFavoritesAndTrades, updateTradesLists } from '../server_call/serverCall'
 import './index.css'
 
 const Nav = () => {
@@ -46,7 +46,7 @@ const Nav = () => {
                     Trades
                 </Link>
                 <Link to='/trading-avenue.com/account_summary'>
-                    Performance
+                    History
                 </Link>
             </div>
         </div>

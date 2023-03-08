@@ -12,7 +12,7 @@ import { useContext, useRef, useEffect } from 'react';
 import { AppContext } from './context/app_context';
 import { candlesResquest } from './api_request';
 import Auth from './pages/Auth';
-import { getUserFromSession } from './components/serverCall';
+import { getUserFromSession } from './components/server_call/serverCall';
 
 function App() {
   let { user, setUser, setPairList } = useContext(AppContext)

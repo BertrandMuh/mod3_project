@@ -1,5 +1,4 @@
 import { useState, createContext } from 'react';
-import { getFavoritesAndTrades, getUserFromSession } from '../components/serverCall';
 
 export const AppContext = createContext();
 
@@ -12,11 +11,6 @@ const AppContextProvider = (props) => {
     const [favorite, setFavorite] = useState();
     const [openTrades, setOpenTrades] = useState()
     const [closeTrades, setCloseTrades] = useState()
-
-
-
-
-
 
     return (
         <AppContext.Provider value={{

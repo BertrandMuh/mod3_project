@@ -4,7 +4,7 @@ import Currency from '../../components/Currency'
 import Disclaimer from '../../components/Disclaimer'
 import HomeSummary from '../../components/home_summary'
 import Loading from '../../components/Loading'
-import { getFavoritesAndTrades } from '../../components/serverCall'
+import { getFavoritesAndTrades } from '../../components/server_call/serverCall'
 import { AppContext } from '../../context/app_context'
 // import { getUserFromSession } from '../../functions/useful-functions'
 import Auth from '../Auth'
@@ -25,22 +25,6 @@ const Home = () => {
         }
         makeAServerCall(user._id)
     }, [])
-
-    // window.history.pushState(null, null, '/trading-avenue.com')
-    // let { pairList } = useContext(AppContext)
-
-    // let isFirstRender = useRef(true)
-    // useEffect(() => {
-    //     const handleFitstLoad = async () => {
-    //         if (isFirstRender.current) {
-    //             let result = await candlesResquest()
-    //             setPairList(result)
-    //             isFirstRender.current = false
-    //         }
-    //     }
-    //     handleFitstLoad()
-
-    // }, [setPairList])
 
     let returnPageComponents = pairList.length !== 0 ?
         <div className='summary-pairs'>
