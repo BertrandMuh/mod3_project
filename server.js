@@ -4,7 +4,7 @@ const logger = require('morgan');
 // cross origin access 
 const cors = require('cors');
 const axios = require('axios');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const userModel = require('./models/user')
 
 const passport = require('passport');
@@ -90,8 +90,6 @@ app.post('/user/sign_up', async (req, res) => {
         email: req.body.email,
         password: hashedPassword
     }
-    console.log(hashedPassword);
-    console.log(user.email);
     try {
         let check = await userModel.User.findOne({ email: user.email })
         // console.log(check.status);
@@ -100,25 +98,23 @@ app.post('/user/sign_up', async (req, res) => {
         }
         else if (check === null) {
             let userResponse = await userModel.User.create(user)
-            let favoriteAndTradeResponse = await userModel.tradeAndWatchlist.create({ user: userResponse._id })
+            await userModel.tradeAndWatchlist.create({ user: userResponse._id })
 
             res.send('created')
         }
 
     } catch (error) {
-        console.log(error);
         res.send(error)
     }
 })
 
 // login route
 app.put('/user/login', async (req, res, next) => {
-    console.log(req.body);
+
     // passport authentication
     // let passport do the authentification
     // passport.authenticate will grab the login form infos from req.body and use them to perform the authentification
     passport.authenticate("local", (err, user, message) => {
-        console.log(message);
         // handle the error
         if (err) throw err;
         if (!user) {
@@ -144,17 +140,13 @@ app.get('/user/logout', async (req, res) => {
 })
 
 app.get('/get_favorite_and_trades/:userId', async (req, res) => {
-    console.log(req.params.userId);
     let response = await userModel.tradeAndWatchlist.findOne({ user: req.params.userId })
-    console.log(response);
     res.send(response)
 })
 
 
 app.put('/update_trades_favorite_lists/:userId', async (req, res) => {
-    console.log(req.body, req.params.userId, 'jjjj');
-    let response = await userModel.tradeAndWatchlist.findOneAndUpdate({ user: req.params.userId }, req.body, { new: true })
-    console.log(response, 1);
+    await userModel.tradeAndWatchlist.findOneAndUpdate({ user: req.params.userId }, req.body, { new: true })
     res.send('update')
 })
 

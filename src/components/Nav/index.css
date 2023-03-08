@@ -57,7 +57,7 @@
 @media(max-width: 510px) {
     .nav {
         flex-direction: column;
-
+        padding: 0;
     }
 
     .navbar {

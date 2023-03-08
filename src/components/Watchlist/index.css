@@ -1,3 +1,7 @@
+.root {
+    --min-width-100: 100px
+}
+
 .favorite-pair {
     display: flex;
     justify-content: space-between;
@@ -19,10 +23,18 @@
     cursor: pointer;
 }
 
+.favorite-thead {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
 #favorite-container {
     background: rgb(0, 62, 48);
     color: white;
-    padding-bottom: 5px;
+    width: max-content;
+    min-width: 180px;
+    height: max-content;
 }
 
 #favorite-container>.title {
@@ -34,4 +46,9 @@
 .fav-pair-name:hover {
     color: yellow;
     cursor: pointer;
+}
+
+.fav-pair-name {
+    text-decoration: none;
+    color: white;
 }

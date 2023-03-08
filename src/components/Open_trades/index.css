@@ -1,13 +1,126 @@
-.open-trades-table {
-    border: 1px solid black;
-    width: 100%;
+:root {
+    --minWidth350: 350px
 }
+
+.open-trades-table {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    width: 100%;
+    max-width: 1000px;
+    min-width: var(--minWidth350);
+    overflow-y: auto;
+    margin: auto;
+}
+
+.open-trades.total {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 560px;
+
+
+}
+
+
+
+.open-trades.total>p {
+    background: white;
+}
+
+
 
 .open-trades-table>* {
     display: flex;
-    justify-content: space-between;
 }
 
 .open-trades-container {
     width: 100%;
+    min-width: 350px;
+}
+
+.open-trades.thead {
+    background: black;
+    color: white;
+}
+
+.open-trades.thead>p {
+    padding: 5px 0;
+}
+
+.open-trades>* {
+    min-width: 80px;
+    width: 40%;
+    max-width: 400px;
+    border-bottom: 1px solid gray;
+}
+
+.fa-pen {
+    background: red;
+}
+
+.open-trades>a {
+    text-decoration: none;
+    color: black
+}
+
+
+.open-trades {
+    width: 100%;
+    min-width: max-content;
+}
+
+.up {
+    color: green
+}
+
+.down {
+    color: red;
+}
+
+.open-trades>.action {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.action.thead {
+    color: white;
+    padding-right: 50px;
+    font-weight: normal;
+}
+
+.action>* {
+    width: max-content;
+}
+
+.action>*:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.total-label {
+    min-width: 80px;
+    color: red;
+    width: 100%;
+    max-width: 142.85px;
+    border: 1px solid red;
+
+}
+
+#net-profit {
+    min-width: 160px;
+    max-width: 285px;
+    width: 100%;
+    border: 1px solid red
+}
+
+@media(max-width: 850px) {
+    /* .open-trades {
+        width: ;
+    } */
 }

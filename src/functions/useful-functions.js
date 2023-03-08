@@ -1,4 +1,5 @@
-import axios from 'axios'
+
+
 
 export const getDailyAndWeeklyData = (candles) => {
     let weeklyData = []

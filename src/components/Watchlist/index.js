@@ -1,11 +1,18 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/app_context'
-import { getFavorite, getFavoritesAndTrades } from '../serverCall'
 import './index.css'
 
-const Watchlist = (props) => {
-    const { favorite } = props
-    const { user, setFavorite, openTrade, setOpenTrade } = useContext(AppContext)
+const Watchlist = () => {
+    const { setFavorite, favorite } = useContext(AppContext)
+    const addToOrRemoveFromFavorite = (e) => {
+        let { id } = e.target
+        let favoriteList = [...favorite]
+        favoriteList.splice(favoriteList.indexOf(id), 1)
+        setFavorite(favoriteList)
+    }
+
+    useEffect(() => { }, [favorite])
 
     let listJSX
     if (favorite !== undefined) {
@@ -13,13 +20,12 @@ const Watchlist = (props) => {
         listJSX = favoriteList.map((item) => {
             return (
                 <div className='favorite-pair' key={item}>
-                    <p className='fav-pair-name'>{item}</p>
-                    <i className="fa fa-trash-o"></i>
+                    <Link to={'/trading-avenue.com/instrument/?pair=' + item.replace(' / ', '_')} className='fav-pair-name'>{item}</Link>
+                    <i className="fa fa-trash-o " id={item} onClick={addToOrRemoveFromFavorite}></i>
                 </div>
             )
         })
     }
-
     return (
         <div id='favorite-container'>
             <p className='title'>Favorites</p>

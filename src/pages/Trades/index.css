@@ -2,15 +2,14 @@
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    gap: 100px;
+    gap: 20px;
     max-width: 1200px;
     margin: auto;
 }
 
-#active-trades {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 500px;
-    color: red; */
+@media(max-width: 500px) {
+    #trades {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
 }

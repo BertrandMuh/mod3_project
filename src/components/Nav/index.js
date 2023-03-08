@@ -15,8 +15,7 @@ const Nav = () => {
                 closeTrades
             }
             const makeAServerCall = async (data, userId) => {
-                let serverRequest = await updateTradesLists(data, userId)
-
+                await updateTradesLists(data, userId)
             }
             makeAServerCall(tradesLists, user)
         }
@@ -27,7 +26,6 @@ const Nav = () => {
                 setFavorite(response.data.watchList)
                 setCloseTrades(response.data.closeTrades)
                 setOpenTrades(response.data.openTrades)
-                console.log('nav');
             }
             makeAServerCall(user._id)
         }
