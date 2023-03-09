@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/app_context'
-import { getFavoritesAndTrades, updateTradesLists } from '../server_call/serverCall'
+import { getFavoritesAndTrades, logOut, updateTradesLists } from '../server_call/serverCall'
 import './index.css'
 
 const Nav = () => {
@@ -47,6 +47,9 @@ const Nav = () => {
                 </Link>
                 <Link to='/trading-avenue.com/account_summary'>
                     History
+                </Link>
+                <Link onClick={logOut}>
+                    Logout
                 </Link>
             </div>
         </div>

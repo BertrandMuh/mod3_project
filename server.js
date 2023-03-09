@@ -135,7 +135,11 @@ app.put('/user/login', async (req, res, next) => {
     })(req, res, next);
 })
 
-app.get('/user/logout', async (req, res) => {
+app.get('/user/logout', (req, res) => {
+
+    req.session.destroy(function (err) {
+        res.redirect('/'); //Inside a callback… bulletproof!
+    });
 
 })
 

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 // import { candlesResquest } from '../../api_request'
 import Currency from '../../components/Currency'
-import Disclaimer from '../../components/Disclaimer'
-import HomeSummary from '../../components/home_summary'
+// import Disclaimer from '../../components/Disclaimer'
+// import HomeSummary from '../../components/home_summary'
 import Loading from '../../components/Loading'
 import { getFavoritesAndTrades } from '../../components/server_call/serverCall'
 import { AppContext } from '../../context/app_context'
@@ -28,9 +28,9 @@ const Home = () => {
 
     let returnPageComponents = pairList.length !== 0 ?
         <div className='summary-pairs'>
-            <HomeSummary />
+            {/* <HomeSummary /> */}
             <Currency />
-            <Disclaimer />
+            {/* <Disclaimer /> */}
         </div> :
         <Loading />
 
@@ -38,7 +38,7 @@ const Home = () => {
         <>
             {user ?
                 <div className='homepage'>
-                    <h1>Home</h1>
+                    <h1>Welcome to Trading Avenue!</h1>
                     {returnPageComponents}
                 </div> :
                 <Auth />

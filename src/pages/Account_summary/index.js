@@ -3,7 +3,6 @@ import { AppContext } from '../../context/app_context'
 import './index.css'
 const Performance = () => {
     const { closeTrades } = useContext(AppContext)
-    console.log(closeTrades);
     let summaryJSX
     if (closeTrades !== undefined) {
         let closeTradesList = [...closeTrades]

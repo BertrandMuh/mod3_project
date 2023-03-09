@@ -13,7 +13,7 @@ const Instrument = () => {
 
             <div className='instrument-div'>
                 <InstrumentTable />
-                <Analysis />
+                {/* <Analysis /> */}
             </div>
         </div>
     )

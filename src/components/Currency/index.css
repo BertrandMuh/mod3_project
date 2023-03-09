@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: max-content;
+    max-width: 800px;
     width: 90%;
     margin: auto;
     padding: 5px 10px;

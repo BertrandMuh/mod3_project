@@ -20,6 +20,11 @@ export const logIn = async (formData) => {
     return response
 }
 
+export const logOut = () => {
+    axios('/user/logout')
+    window.location.href = '/'
+}
+
 export const getUserFromSession = async () => {
     let response = await axios('/session-info')
     // WE HAVE THE LOGGED IN USER! :)

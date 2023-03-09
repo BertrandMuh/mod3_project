@@ -2,7 +2,7 @@
 import './App.css';
 
 import { Routes, Route } from 'react-router-dom'
-import Loading from './components/Loading';
+// import Loading from './components/Loading';
 import Home from './pages/homepage';
 import Nav from './components/Nav';
 import ActiveTrades from './pages/Trades';
